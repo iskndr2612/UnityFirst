@@ -6,6 +6,8 @@ public class ScriptRnd : MonoBehaviour
 {
     public GameObject[] objects;
     private GameObject inst_objects;
+    [SerializeField]
+    private float RangeForObjects = 30f;
 
     void Start()
     {
@@ -24,14 +26,14 @@ public class ScriptRnd : MonoBehaviour
 
     void Inst()
     {
-        Instantiate(inst_objects, new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f)), Quaternion.identity);
+        Instantiate(inst_objects, new Vector3(Random.Range(-1 * RangeForObjects, RangeForObjects), 0f, Random.Range(-1 * RangeForObjects, RangeForObjects)), Quaternion.identity);
     }
 
     IEnumerator instObj()
     {
         int rand2 = Random.Range(0, objects.Length);
-        Instantiate(objects[rand2], new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f)), Quaternion.identity);
-        yield return new WaitForSeconds(1.5f);
+        _ = Instantiate(objects[rand2], new Vector3(Random.Range(-1 * RangeForObjects, RangeForObjects), 0f, Random.Range(-1 * RangeForObjects, RangeForObjects)), Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
        
     }
 
